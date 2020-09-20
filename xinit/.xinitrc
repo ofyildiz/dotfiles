@@ -3,6 +3,6 @@ while true; do
     sleep 1s
 done &
 
-exec dwm &
-
 ~/.fehbg &
+
+exec dwm
