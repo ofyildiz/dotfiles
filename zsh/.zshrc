@@ -100,6 +100,8 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -v
 
+export PATH=~/.emacs.d/bin:$PATH
+
 source /usr/bin/virtualenvwrapper.sh
 
 neofetch
