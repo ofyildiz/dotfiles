@@ -5,4 +5,6 @@ done &
 
 ~/.fehbg &
 
+setxkbmap -option caps:swapescape
+
 exec dwm
