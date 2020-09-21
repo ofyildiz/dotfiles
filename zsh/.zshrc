@@ -99,3 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 bindkey -v
+
+source /usr/bin/virtualenvwrapper.sh
+
+neofetch
