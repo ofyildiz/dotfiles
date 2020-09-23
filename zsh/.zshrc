@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,10 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-bindkey -v
-
-export PATH=~/.emacs.d/bin:$PATH
-
-source /usr/bin/virtualenvwrapper.sh
-
-neofetch
+if [ -f ~/.zshrc.local ]; then
+    . ~/.zshrc.local
+fi

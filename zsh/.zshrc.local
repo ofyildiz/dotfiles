@@ -1,0 +1,7 @@
+export PATH=~/.emacs.d/bin:$PATH
+
+source /usr/bin/virtualenvwrapper.sh
+
+bindkey -v
+
+neofetch
