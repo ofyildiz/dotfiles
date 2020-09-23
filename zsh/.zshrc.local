@@ -1,5 +1,7 @@
 export PATH=~/.emacs.d/bin:$PATH
 
+export WORKON_HOME=~/virtualenvs
+
 source /usr/bin/virtualenvwrapper.sh
 
 bindkey -v
