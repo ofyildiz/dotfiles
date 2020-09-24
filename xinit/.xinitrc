@@ -5,6 +5,6 @@ done &
 
 ~/.fehbg &
 
-setxkbmap -option caps:swapescape
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 
 exec dwm
