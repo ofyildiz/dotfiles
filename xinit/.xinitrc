@@ -3,7 +3,7 @@ while true; do
     sleep 1s
 done &
 
-~/.fehbg &
+~/.fehbg
 
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 
