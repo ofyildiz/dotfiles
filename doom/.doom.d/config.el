@@ -90,6 +90,6 @@
                       (mu4e-refile-folder     . "/Archive")
                       (mu4e-trash-folder      . "/Trash")
                       (mu4e-update-interval   . 1800)
-                      ;(mu4e-sent-messages-behavior . 'delete)
+                      (mu4e-sent-messages-behavior . sent)
                       )
                     nil)
