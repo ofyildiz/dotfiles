@@ -52,3 +52,44 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
+(after! mu4e
+  (setq! mu4e-maildir (expand-file-name "~/.mail/tuhh")
+         mu4e-get-mail-command "mbsync -a"
+         mu4e-index-update-in-background t
+         mu4e-compose-signature-auto-include t
+         mu4e-use-fancy-chars t
+         mu4e-view-show-addresses t
+         mu4e-view-show-images t
+         mu4e-compose-format-flowed t
+         mu4e-compose-in-new-frame t
+         mu4e-change-filenames-when-moving t
+         mu4e-maildir-shortcuts
+         '( ("/Inbox" . ?i)
+            ("/Drafts" . ?d)
+            ("/Sent" . ?s)
+            ("/Archive" . ?a)
+            ("/Trash" . ?t))
+
+         message-send-mail-function 'smtpmail-send-it
+         message-signature-file "~/.signature"
+         message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n"
+         message-citation-line-function 'message-insert-formatted-citation-line
+         message-kill-buffer-on-exit t))
+
+(set-email-account! "coy1655"
+                    '((user-mail-address      . "oemer.yildiz@tuhh.de")
+                      (user-full-name         . "Oemer Faruk Yildiz")
+                      (smtpmail-smtp-server   . "mail.tu-harburg.de")
+                      (smtpmail-smtp-service  . 587)
+                      (smtpmail-stream-type   . starttls)
+                      (smtpmail-debug-info    . t)
+                      (mu4e-drafts-folder     . "/Drafts")
+                      (mu4e-sent-folder       . "/Sent")
+                      (mu4e-refile-folder     . "/Archive")
+                      (mu4e-trash-folder      . "/Trash")
+                      (mu4e-update-interval   . 1800)
+                      ;(mu4e-sent-messages-behavior . 'delete)
+                      )
+                    nil)
