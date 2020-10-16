@@ -56,6 +56,7 @@
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
 (after! mu4e
   (setq! mu4e-maildir (expand-file-name "~/.mail/tuhh")
+         mu4e-attachment-dir "~"
          mu4e-get-mail-command "mbsync -a"
          mu4e-index-update-in-background t
          mu4e-compose-signature-auto-include t
@@ -69,7 +70,7 @@
          '( ("/Inbox" . ?i)
             ("/Drafts" . ?d)
             ("/Sent" . ?s)
-            ("/Archive" . ?a)
+            ("/Archives" . ?a)
             ("/Trash" . ?t))
 
          message-send-mail-function 'smtpmail-send-it
@@ -87,7 +88,7 @@
                       (smtpmail-debug-info    . t)
                       (mu4e-drafts-folder     . "/Drafts")
                       (mu4e-sent-folder       . "/Sent")
-                      (mu4e-refile-folder     . "/Archive")
+                      (mu4e-refile-folder     . "/Archives")
                       (mu4e-trash-folder      . "/Trash")
                       (mu4e-update-interval   . 1800)
                       (mu4e-sent-messages-behavior . sent)
