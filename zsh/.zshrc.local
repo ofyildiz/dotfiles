@@ -2,8 +2,9 @@ export PATH=~/.emacs.d/bin:$PATH
 export PATH=~/.gem/ruby/2.7.0/bin:$PATH
 
 export WORKON_HOME=~/virtualenvs
-
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export EDITOR="emacsclient -c"
+export VISUAL="emacsclient -c"
 
 source /usr/bin/virtualenvwrapper.sh
 
