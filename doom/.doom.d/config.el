@@ -94,3 +94,30 @@
                       (mu4e-sent-messages-behavior . sent)
                       )
                     nil)
+
+(setq! org-publish-project-alist
+       '(
+         ("org-oemer"
+          ;; path to my org files
+          :base-directory "/home/oemer/opub/org/"
+          :base-extension "org"
+          :publishing-directory "/home/oemer/opub/site/"
+          :recursive t
+          :with-toc nil
+          :publishing-function org-html-publish-to-html
+          :headline-levels 3
+          :section-numbers nil
+          :html-extension "html"
+          :html-head "<link rel=\"stylesheet\"
+                  href=\"css/vanilla.css\" type=\"text/css\"/>"
+          :html-preamble t
+          )
+         ("org-oemer-static"
+          ;; path to my org files
+          :base-directory "/home/oemer/opub/org/css/"
+          :base-extension "css\\|scss"
+          :publishing-directory "/home/oemer/opub/site/css/"
+          :publishing-function org-publish-attachment
+          )
+         ("oemer" :components ("org-oemer") ("org-oemer-static"))
+         ))
