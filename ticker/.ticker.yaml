@@ -1,0 +1,14 @@
+show-summary: true
+show-tags: true
+show-fundamentals: true
+show-separator: true
+interval: 5
+watchlist:
+  - BTC-EUR
+  - BCH-EUR
+  - ETH-EUR
+  - EXS1.DE
+lots:
+  - symbol: "EXV3.DE"
+    quantity: 15.0
+    unit_cost: 63.14
