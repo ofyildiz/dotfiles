@@ -95,6 +95,8 @@
                       )
                     nil)
 
+(setq! org-element-cache-persistent nil)
+
 (setq! org-publish-project-alist
        '(
          ("org-oemer"
