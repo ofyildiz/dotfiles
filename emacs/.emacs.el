@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/agenda.org"))
+ '(org-agenda-files '("~/org/agenda.org"))
  '(package-selected-packages
    '(ripgrep gnuplot minions doom-modeline ivy command-log-mode use-package magit projectile company-math auctex ranger company vertico avy)))
 (custom-set-faces
