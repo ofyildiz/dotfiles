@@ -160,9 +160,9 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-capture-templates
-      '(("o" "Onetime" entry (file+headline "~/agenda.org" "Onetime")
+      '(("o" "Onetime" entry (file+headline "~/org/agenda.org" "Onetime")
 	 "* TODO %?\n %i\n %a")
-	("r" "Recurrent" entry (file+headline "~/agenda.org" "Recurrent")
+	("r" "Recurrent" entry (file+headline "~/org/agenda.org" "Recurrent")
 	 "* TODO %?\n %i\n %a")))
 (setq org-agenda-exporter-settings
 	'((ps-print-color-p 'black-white)))
