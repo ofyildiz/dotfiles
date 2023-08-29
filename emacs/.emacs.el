@@ -168,3 +168,13 @@
 	'((ps-print-color-p 'black-white)))
 
 (setq make-backup-files nil)
+
+;; tags
+(setq path-to-ctags "c:/cygwin64/bin/ctags.exe")
+
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name))))
+;; copy TAGS file to root directory after creation and execute visit-tags-table
