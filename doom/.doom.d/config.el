@@ -97,6 +97,8 @@
 
 (setq! org-element-cache-persistent nil)
 
+(setq! org-link-file-path-type 'relative)
+(setq! org-publish-use-timestamps-flag nil)
 (setq! org-publish-project-alist
        '(
          ("org-oemer"
@@ -104,6 +106,7 @@
           :base-directory "~/blog/org/"
           :base-extension "org"
           :publishing-directory "~/blog/html/"
+          ;; :recursive t
           :with-toc nil
           :publishing-function org-html-publish-to-html
           :headline-levels 3
@@ -118,6 +121,7 @@
           :base-directory "~/blog/org/posts/"
           :base-extension "org"
           :publishing-directory "~/blog/html/posts/"
+          ;; :recursive t
           :with-toc nil
           :publishing-function org-html-publish-to-html
           :headline-levels 3
@@ -129,10 +133,11 @@
           )
          ("org-oemer-css"
           ;; path to my stylesheets
-          :base-directory "~/blog/org/css/"
+          :base-directory "~/blog/org/"
           :base-extension "css\\|scss"
-          :publishing-directory "~/blog/html/css/"
+          :publishing-directory "~/blog/html/"
+          :recursive t
           :publishing-function org-publish-attachment
           )
-         ("oemer" :components ("org-oemer") ("org-oemer-posts") ("org-oemer-css"))
+         ("oemer" :components ("org-oemer" "org-oemer-posts" "org-oemer-css"))
          ))
