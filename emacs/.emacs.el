@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/org/agenda.org"))
  '(package-selected-packages
-   '(ripgrep gnuplot minions doom-modeline ivy command-log-mode use-package magit projectile company-math auctex ranger company vertico avy)))
+   '(lsp-mode eglot ripgrep gnuplot minions doom-modeline ivy command-log-mode use-package magit projectile company-math auctex ranger company vertico avy)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -54,6 +54,7 @@
 	 ("C-k". ivy-previous-line)
 	 ("C-d". ivy-previous-i-search-kill))
   :init (ivy-mode 1))
+(setq ivy-use-selectable-prompt t)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;; (use-package doom-modeline
 ;;   :ensure t
@@ -69,7 +70,8 @@
 (tool-bar-mode 0)
 (tooltip-mode -1)
 (set-fringe-mode 10)
-(global-linum-mode 0)
+;;(global-linum-mode 0)
+(line-number-mode 1)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
@@ -140,6 +142,11 @@
 (require 'winum)
 (winum-mode 1)
 (winum-set-keymap-prefix (kbd "C-w"))
+
+;; does not work, delete c-eldoc in the future, keep here only for reference
+;; (require 'c-eldoc)
+;; (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+;; (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
 
 (global-visual-line-mode 1)
 (setq gdb-many-windows t)
