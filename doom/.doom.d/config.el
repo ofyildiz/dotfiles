@@ -131,6 +131,21 @@
                   href=\"../css/default.css\" type=\"text/css\"/>"
           :html-preamble t
           )
+         ("org-oemer-recipes"
+          ;; path to my org recipes
+          :base-directory "~/blog/org/recipes/"
+          :base-extension "org"
+          :publishing-directory "~/blog/html/recipes/"
+          ;; :recursive t
+          :with-toc nil
+          :publishing-function org-html-publish-to-html
+          :headline-levels 3
+          :section-numbers nil
+          :html-extension "html"
+          :html-head "<link rel=\"stylesheet\"
+                  href=\"../css/default.css\" type=\"text/css\"/>"
+          :html-preamble t
+          )
          ("org-oemer-css"
           ;; path to my stylesheets
           :base-directory "~/blog/org/"
@@ -139,5 +154,5 @@
           :recursive t
           :publishing-function org-publish-attachment
           )
-         ("oemer" :components ("org-oemer" "org-oemer-posts" "org-oemer-css"))
+         ("oemer" :components ("org-oemer" "org-oemer-posts" "org-oemer-recipes" "org-oemer-css"))
          ))
