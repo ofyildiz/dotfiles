@@ -4,28 +4,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/org/agenda.org"))
- '(package-selected-packages
-   '(lsp-mode eglot ripgrep gnuplot minions doom-modeline ivy command-log-mode use-package magit projectile company-math auctex ranger company vertico avy)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(defun my-latex-mode-setup ()
-  (setq-local company-backends
-	      (append '((company-math-symbols-latex
-			 company-math-symbols-unicode
-			 company-latex-commands))
-		      company-backends)))
+
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-setup)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'before-save-hook 'whitespace-cleanup)
-(company-mode 1)
-(vertico-mode 0)
-(ranger-override-dired-mode t)
-(projectile-mode 1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (require 'package)
 (dolist (elem '(("melpa" . "https://melpa.org/packages/")
@@ -37,6 +26,28 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package ispell)
+(use-package auctex)
+(use-package lsp-mode)
+(use-package magit)
+(use-package avy)
+(use-package company-math)
+(use-package company)
+(company-mode 1)
+(defun my-latex-mode-setup ()
+  (setq-local company-backends
+	      (append '((company-math-symbols-latex
+			 company-math-symbols-unicode
+			 company-latex-commands))
+		      company-backends)))
+(use-package vertico)
+(vertico-mode 0)
+(use-package ranger)
+(ranger-override-dired-mode t)
+(use-package projectile)
+(projectile-mode 1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (use-package ivy
   :diminish
@@ -89,12 +100,11 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
-(add-to-list 'load-path "~/.emacs.d/evil")
+(global-set-key (kbd "C-c s") 'evil-avy-goto-char-2)
 (setq evil-want-C-u-scroll t)
 (setq evil-undo-system 'undo-redo)
-(require 'evil)
+(use-package evil)
 (evil-mode 1)
-(global-set-key (kbd "C-c s") 'evil-avy-goto-char-2)
 
 ;; add evil snipe
 (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)
@@ -103,7 +113,8 @@
 (setq python-shell-interpreter-args "-m IPython")
 
 (if (eq system-type 'windows-nt)
-    (add-to-list 'exec-path "d:/hunspell/bin"))
+    (dolist (item '("d:/hunspell/bin" "c:/msys64/mingw64/bin"))
+      (add-to-list 'exec-path item)))
 
 (setq ispell-program-name (locate-file "hunspell"
 				       exec-path exec-suffixes 'file-executable-p))
@@ -136,10 +147,7 @@
 				       iso-8859-1)
 				      ))
 
-(require 'ispell)
-
-(add-to-list 'load-path "d:\\EmacsPackages")
-(require 'winum)
+(use-package winum)
 (winum-mode 1)
 (winum-set-keymap-prefix (kbd "C-w"))
 
@@ -160,8 +168,6 @@
 ;; (use-package all-the-icons
 ;;   :if (display-graphic-p))
 ;; (use-package nerd-icons)
-
-;; (use-package ripgrep)
 
 ;; org mode
 (global-set-key (kbd "C-c a") 'org-agenda)
