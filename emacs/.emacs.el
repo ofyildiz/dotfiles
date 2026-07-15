@@ -15,6 +15,7 @@
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-setup)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'c-mode 'my-add-hook-c-mode)
 
 (require 'package)
 (dolist (elem '(("melpa" . "https://melpa.org/packages/")
@@ -73,6 +74,9 @@
 ;;   (setq doom-modeline-height 1))
 (use-package gnuplot)
 
+;; indent-tabs-mode is still actived
+;; solution needed
+(defun my-add-hook-c-mode () (setq-local indent-tabs-mode nil))
 (electric-pair-mode 1)
 (menu-bar-mode 0)
 (setq inhibit-startup-message t)
@@ -113,7 +117,7 @@
 (setq python-shell-interpreter-args "-m IPython")
 
 (if (eq system-type 'windows-nt)
-    (dolist (item '("d:/hunspell/bin" "c:/msys64/mingw64/bin"))
+    (dolist (item '("d:/hunspell/bin" "c:/msys64/mingw64/bin" "c:/msys64/usr/bin"))
       (add-to-list 'exec-path item)))
 
 (setq ispell-program-name (locate-file "hunspell"
