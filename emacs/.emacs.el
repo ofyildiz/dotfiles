@@ -139,6 +139,7 @@
 (require 'ispell)
 
 (add-to-list 'load-path "d:\\EmacsPackages")
+(setq geiser-guile-binary "d:/msys64/usr/bin/guile.exe")
 (require 'winum)
 (winum-mode 1)
 (winum-set-keymap-prefix (kbd "C-w"))
