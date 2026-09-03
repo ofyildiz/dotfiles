@@ -56,7 +56,6 @@
 (setq ivy-use-selectable-prompt t)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;; (use-package doom-modeline
-;;   :ensure t
 ;;   :init (doom-modeline-mode 1)
 ;;   (setq doom-modeline-height 1))
 (use-package gnuplot)
@@ -78,8 +77,12 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
+(use-package doom-themes
+  :custom
+  (doom-themes-enable-bold t)
+  (doom-themes-enable-italic t)
+  :config
+  (load-theme 'doom-dracula t))
 
 (defun custom-after-frame (frame)
   (if (display-graphic-p frame)
@@ -95,8 +98,9 @@
 (global-set-key (kbd "C-c s") 'evil-avy-goto-char-2)
 (setq evil-want-C-u-scroll t)
 (setq evil-undo-system 'undo-redo)
-(use-package evil)
-(evil-mode 1)
+(use-package evil
+  :config
+  (evil-mode 1))
 
 ;; add evil snipe
 (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)
