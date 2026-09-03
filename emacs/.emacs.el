@@ -143,9 +143,20 @@
 
 (add-to-list 'load-path "d:\\EmacsPackages")
 (setq geiser-guile-binary "d:/msys64/usr/bin/guile.exe")
-(use-package winum)
-(winum-mode 1)
-(winum-set-keymap-prefix (kbd "C-w"))
+(use-package winum
+  :init
+  :config
+  (winum-mode 1)
+  (with-eval-after-load 'evil
+    (define-key evil-window-map (kbd "1") 'winum-select-window-1)
+    (define-key evil-window-map (kbd "2") 'winum-select-window-2)
+    (define-key evil-window-map (kbd "3") 'winum-select-window-3)
+    (define-key evil-window-map (kbd "4") 'winum-select-window-4)
+    (define-key evil-window-map (kbd "5") 'winum-select-window-5)
+    (define-key evil-window-map (kbd "6") 'winum-select-window-6)
+    (define-key evil-window-map (kbd "7") 'winum-select-window-7)
+    (define-key evil-window-map (kbd "8") 'winum-select-window-8)
+    (define-key evil-window-map (kbd "9") 'winum-select-window-9)))
 
 ;; does not work, delete c-eldoc in the future, keep here only for reference
 ;; (require 'c-eldoc)
