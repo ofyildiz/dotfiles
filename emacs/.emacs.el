@@ -101,6 +101,13 @@
 (use-package evil
   :config
   (evil-mode 1))
+(use-package gptel
+  :init
+  (setq gptel-highlight-mode t)
+  :config
+  (setq gptel-default-mode 'org-mode))
+(global-set-key (kbd "C-c g") #'gptel-send)
+(global-set-key (kbd "C-c m") #'gptel-menu)
 
 ;; add evil snipe
 (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)
