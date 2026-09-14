@@ -55,9 +55,21 @@
   :init (ivy-mode 1))
 (setq ivy-use-selectable-prompt t)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-;; (use-package doom-modeline
-;;   :init (doom-modeline-mode 1)
-;;   (setq doom-modeline-height 1))
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1))
+(use-package nerd-icons
+  :custom
+  (nerd-icons-font-family "Symbols Nerd Font Mono"))
+;; Linux/macOS/BSDs
+(when (member system-type '(gnu gnu/linux gnu/kfreebsd darwin))
+  (unless (find-font (font-spec :name "Symbols Nerd Font Mono"))
+    (nerd-icons-install-fonts t)))
+
+;; Windows
+(when (string-equal system-type 'windows-nt)
+  (unless (find-font (font-spec :name "Symbols Nerd Font Mono"))
+    (nerd-icons-install-fonts "c:/Users/OY-local/Desktop/")))
 (use-package gnuplot)
 
 ;; indent-tabs-mode is still actived
@@ -84,14 +96,7 @@
   :config
   (load-theme 'doom-dracula t))
 
-(defun custom-after-frame (frame)
-  (if (display-graphic-p frame)
-      (progn
-	(set-face-attribute 'default nil :font "Courier New" :height 150)
-	)))
-(mapc 'custom-after-frame (frame-list))
-(if (daemonp)
-    (add-hook 'server-after-make-frame-hook (custom-after-frame (selected-frame))))
+(set-face-attribute 'default nil :height 150)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
