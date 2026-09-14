@@ -109,6 +109,27 @@
 (global-set-key (kbd "C-c g") #'gptel-send)
 (global-set-key (kbd "C-c m") #'gptel-menu)
 
+(defun my/copy-password (host user)
+  "Look up a password via auth-source, copy it, and clear it after 15 seconds."
+  (interactive "sHost: \nsUser: ")
+  (let* ((match (car (auth-source-search :host host :user user :require '(:secret))))
+	 (secret-func (plist-get match :secret))
+	 (password (if (functionp secret-func) (funcall secret-func) secret-func)))
+    (if password
+	(progn
+	  (kill-new password)
+	  (message "Password copied! Clipboard will clear in 15 seconds.")
+	  ;; Clear the clipboard after 15 seconds
+	  (run-with-timer 15 nil
+			  (lambda (expected-pass)
+			    ;; Only clear if the user hasn't copied something else since
+			    (when (string= (current-kill 0 t) expected-pass)
+			      (kill-new "")
+			      (message "Clipboard cleared for security.")))
+			  password))
+      (error "No password found for %s (%s)" host user))))
+
+
 ;; add evil snipe
 (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)
 							 (python . t)))
