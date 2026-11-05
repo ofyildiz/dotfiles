@@ -224,6 +224,8 @@
 (setq org-agenda-exporter-settings
 	'((ps-print-color-p 'black-white)))
 
+(setq org-image-actual-width 400)
+
 (setq make-backup-files nil)
 
 ;; tags
