@@ -233,8 +233,24 @@
 	 "* TODO %?\n %i\n %a")))
 (setq org-agenda-exporter-settings
 	'((ps-print-color-p 'black-white)))
-
 (setq org-image-actual-width 400)
+
+(defun my/org-latex-preview-scale-from-font ()
+  "Set LaTeX preview scale based on current buffer font size and text scale."
+  (let* ((base-height (face-attribute 'default :height nil 'default))
+	 (text-scale (if (bound-and-true-p text-scale-mode)
+			 text-scale-mode-amount
+		       0))
+	 ;; `text-scale-mode-amount` is in steps of 10%.
+	 (effective-height (* base-height (expt 1.1 text-scale)))
+	 (scale (* 1.0 (/ (float effective-height) 100.0))))
+    (setq-local org-format-latex-options
+		(plist-put org-format-latex-options :scale scale))))
+
+(defun my/org-latex-preview-advice (&rest _)
+  (my/org-latex-preview-scale-from-font))
+
+(advice-add 'org-latex-preview :before #'my/org-latex-preview-advice)
 
 (setq make-backup-files nil)
 
