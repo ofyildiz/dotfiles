@@ -194,9 +194,16 @@
     (define-key evil-window-map (kbd "7") 'winum-select-window-7)
     (define-key evil-window-map (kbd "8") 'winum-select-window-8)
     (define-key evil-window-map (kbd "9") 'winum-select-window-9)))
+
 (use-package olivetti
   :config
   (add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100))))
+(global-set-key (kbd "C-c o") #'olivetti-mode)
+
+(use-package org-present)
+(global-set-key (kbd "C-c i") #'org-present)
+(global-set-key (kbd "C-<") #'org-present-prev)
+(global-set-key (kbd "C->") #'org-present-next)
 
 ;; does not work, delete c-eldoc in the future, keep here only for reference
 ;; (require 'c-eldoc)
