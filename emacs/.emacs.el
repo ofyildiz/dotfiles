@@ -233,7 +233,7 @@
 	 "* TODO %?\n %i\n %a")))
 (setq org-agenda-exporter-settings
 	'((ps-print-color-p 'black-white)))
-(setq org-image-actual-width 400)
+(setq org-image-actual-width 600)
 
 (defun my/org-latex-preview-scale-from-font ()
   "Set LaTeX preview scale based on current buffer font size and text scale."
