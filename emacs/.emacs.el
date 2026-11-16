@@ -110,7 +110,9 @@
   :init
   (setq gptel-highlight-mode t)
   :config
-  (setq gptel-default-mode 'org-mode))
+  (setq gptel-default-mode 'org-mode)
+  (gptel-make-anthropic "Claude" :stream t :key gptel-api-key)
+  (gptel-make-openai "ChatGPT" :stream t :key gptel-api-key))
 (global-set-key (kbd "C-c g") #'gptel-send)
 (global-set-key (kbd "C-c m") #'gptel-menu)
 
