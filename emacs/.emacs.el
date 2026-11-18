@@ -94,7 +94,10 @@
   (pdf-tools-install)
   (setq auto-mode-alist
 	(append '(("\\.pdf\\'" . pdf-view-mode))
-		(assq-delete-all "\\.pdf\\'" auto-mode-alist))))
+		(assq-delete-all "\\.pdf\\'" auto-mode-alist)))
+  (with-eval-after-load 'pdf-view
+    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+    (define-key pdf-view-mode-map (kbd "C-r") 'isearch-backward)))
 
 (use-package doom-themes
   :custom
