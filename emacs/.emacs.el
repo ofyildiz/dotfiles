@@ -84,10 +84,17 @@
 (tool-bar-mode 0)
 (tooltip-mode -1)
 (set-fringe-mode 10)
-;;(global-linum-mode 0)
 (line-number-mode 1)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
+(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+
+(use-package pdf-tools
+  :config
+  (pdf-tools-install)
+  (setq auto-mode-alist
+	(append '(("\\.pdf\\'" . pdf-view-mode))
+		(assq-delete-all "\\.pdf\\'" auto-mode-alist))))
 
 (use-package doom-themes
   :custom
